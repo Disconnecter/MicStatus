@@ -22,6 +22,8 @@ To get started with Mic Status, follow these steps:
 ## Usage
 
 - The icon will change to indicate the microphone's status (muted/unmuted).
+- Install [this](https://github.com/raycast/script-commands/blob/master/commands/system/audio/toggle-mic.applescript) apple [script](https://support.apple.com/en-jo/guide/script-editor/scpe037c22c8/mac)
+- Add [hotkey](https://apple.stackexchange.com/questions/175215/how-do-i-assign-a-keyboard-shortcut-to-an-applescript-i-wrote) for new apple script
 
 ## Development
 

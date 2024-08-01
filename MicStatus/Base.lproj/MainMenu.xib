@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,12 +15,19 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Mic_Status" customModuleProvider="target">
             <connections>
                 <outlet property="mainMenu" destination="uQy-DD-JDr" id="O0K-cw-IAr"/>
+                <outlet property="monitorMenuAction" destination="qiq-53-DOG" id="z3B-oU-wbz"/>
                 <outlet property="quitMenuAction" destination="4sb-4s-VLi" id="XiH-a2-oeE"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu title="MicStatus" systemMenu="apple" id="uQy-DD-JDr">
             <items>
+                <menuItem title="Item" id="qiq-53-DOG">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="monitoringActionWithMenuItem:" target="Voe-Tx-rLC" id="yBI-Dh-O12"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Quit MicStatus" keyEquivalent="q" id="4sb-4s-VLi">
                     <connections>
                         <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>

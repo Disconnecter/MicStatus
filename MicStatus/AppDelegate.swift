@@ -12,6 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var mainMenu: NSMenu!
     @IBOutlet weak var quitMenuAction: NSMenuItem!
+    @IBOutlet weak var monitorMenuAction: NSMenuItem!
     
     private let script = NSAppleScript(source: "input volume of (get volume settings)")
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
@@ -32,11 +33,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return image ?? NSImage()
     }()
 
+    private lazy var micDown: NSImage = {
+        let image = NSImage(named: "mic_down")
+        image?.size = Self.iconSize
+        return image ?? NSImage()
+    }()
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
-            self?.setIcon()
-        }
+        startTimer()
         statusItem.menu = mainMenu
+        quitMenuAction.title = NSLocalizedString("Menu.Quit", comment: "")
+    }
+    
+    func applicationWillTerminate(_ aNotification: Notification) {
+        stopTimer()
+    }
+
+    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+        return true
+    }
+
+    @IBAction private func monitoringAction(menuItem: NSMenuItem) {
+        guard timer?.isValid ?? false else {
+            startTimer()
+            return
+        }
+        stopTimer()
     }
     
     private func setIcon() {
@@ -52,15 +74,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
+    private func stopTimer() {
         guard timer?.isValid ?? true else {
             return
         }
         timer?.invalidate()
         timer = nil
+        monitorMenuAction.title = NSLocalizedString("Menu.Start", comment: "")
+        statusItem.button?.image = micDown
+        lastVolume = -1
     }
-
-    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
-        return true
+    
+    private func startTimer() {
+        monitorMenuAction.title = NSLocalizedString("Menu.Stop", comment: "")
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
+            self?.setIcon()
+        }
     }
 }

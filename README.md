@@ -4,10 +4,12 @@
 
 ![Mic Status On Screenshot](mic_on.png)
 ![Mic Status Off Screenshot](mic_off.png)
+![Mic Status Not monitoring Screenshot](monitoring.png)
 
 ## Features
 
 - Intuitive menu bar icon that changes to reflect the microphone's status.
+- You can enable and disable monitoring of the microphone status.
 - Lightweight and unobtrusive design.
 
 ## Getting Started

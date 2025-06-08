@@ -16,6 +16,7 @@
             <connections>
                 <outlet property="mainMenu" destination="uQy-DD-JDr" id="O0K-cw-IAr"/>
                 <outlet property="monitorMenuAction" destination="qiq-53-DOG" id="z3B-oU-wbz"/>
+                <outlet property="hotkeysMenuAction" destination="vNG-12-Abc" id="abc-de-fgh"/>
                 <outlet property="quitMenuAction" destination="4sb-4s-VLi" id="XiH-a2-oeE"/>
             </connections>
         </customObject>
@@ -26,6 +27,11 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="monitoringActionWithMenuItem:" target="Voe-Tx-rLC" id="yBI-Dh-O12"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Hotkeys..." id="vNG-12-Abc">
+                    <connections>
+                        <action selector="showHotkeys:" target="Voe-Tx-rLC" id="ftQ-wx-k2G"/>
                     </connections>
                 </menuItem>
                 <menuItem title="Quit MicStatus" keyEquivalent="q" id="4sb-4s-VLi">

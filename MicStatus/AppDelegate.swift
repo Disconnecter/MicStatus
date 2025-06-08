@@ -13,8 +13,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var mainMenu: NSMenu!
     @IBOutlet weak var quitMenuAction: NSMenuItem!
     @IBOutlet weak var monitorMenuAction: NSMenuItem!
-    
+    @IBOutlet weak var hotkeysMenuAction: NSMenuItem!
+
+    private var hotkeyWindow = HotkeyPreferencesWindowController()
+    private var hotkey: Hotkey? = Hotkey.load()
+    private var hotkeyMonitor: Any?
+
     private let script = NSAppleScript(source: "input volume of (get volume settings)")
+    private let toggleScript = NSAppleScript(source: """
+on getMicrophoneVolume()
+    input volume of (get volume settings)
+end getMicrophoneVolume
+on disableMicrophone()
+    set volume input volume 0
+end disableMicrophone
+on enableMicrophone()
+    set volume input volume 100
+end enableMicrophone
+if getMicrophoneVolume() is greater than 0 then
+    disableMicrophone()
+else
+    enableMicrophone()
+end if
+""")
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     private var timer: Timer?
     private var lastVolume: Int32 = -1
@@ -43,6 +64,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         startTimer()
         statusItem.menu = mainMenu
         quitMenuAction.title = NSLocalizedString("Menu.Quit", comment: "")
+        hotkeysMenuAction.title = NSLocalizedString("Menu.Hotkeys", comment: "")
+        registerHotkeyMonitor()
     }
     
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -59,6 +82,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return
         }
         stopTimer()
+    }
+
+    @IBAction func showHotkeys(_ sender: NSMenuItem) {
+        hotkeyWindow.showWindow(nil)
     }
     
     private func setIcon() {
@@ -90,5 +117,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
             self?.setIcon()
         }
+    }
+
+    func updateHotkey(_ hotkey: Hotkey) {
+        self.hotkey = hotkey
+        registerHotkeyMonitor()
+    }
+
+    private func registerHotkeyMonitor() {
+        if let monitor = hotkeyMonitor {
+            NSEvent.removeMonitor(monitor)
+            hotkeyMonitor = nil
+        }
+        guard let hotkey = hotkey else { return }
+        hotkeyMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
+            let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
+            if event.keyCode == hotkey.keyCode && flags.rawValue == hotkey.modifiers {
+                self?.toggleMicrophone()
+            }
+        }
+    }
+
+    private func toggleMicrophone() {
+        _ = toggleScript?.executeAndReturnError(nil)
     }
 }

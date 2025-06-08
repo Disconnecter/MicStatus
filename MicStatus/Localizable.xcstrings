@@ -4,69 +4,50 @@
     "Menu.Quit" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quit MicStatus"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Вийти з MicStatus"
-          }
-        }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Quit MicStatus" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "\u0412\u0438\u0439\u0442\u0438 \u0437 MicStatus" } }
       }
     },
     "Menu.Start" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start Monitoring"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Почати моніторинг"
-          }
-        }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start Monitoring" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "\u041f\u043e\u0447\u0430\u0442\u0438 \u043c\u043e\u043d\u0456\u0442\u043e\u0440\u0438\u043d\u0433" } }
       }
     },
     "Menu.Stop" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stop Monitoring"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Зупинити моніторинг"
-          }
-        }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Stop Monitoring" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "\u0417\u0443\u043f\u0438\u043d\u0438\u0442\u0438 \u043c\u043e\u043d\u0456\u0442\u043e\u0440\u0438\u043d\u0433" } }
       }
     },
     "Menu.Title" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MicStatus"
-          }
-        },
-        "uk" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "MicStatus"
-          }
-        }
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "MicStatus" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "MicStatus" } }
+      }
+    },
+    "Menu.Hotkeys" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hotkeys..." } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "\u0413\u0430\u0440\u044f\u0447\u0456 \u043a\u043b\u0430\u0432\u0456\u0448\u0456..." } }
+      }
+    },
+    "Prefs.Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Hotkey Preferences" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "\u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f \u0433\u0430\u0440\u044f\u0447\u0438\u0445 \u043a\u043b\u0430\u0432\u0456\u0448" } }
+      }
+    },
+    "Prefs.Description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Press keys to set hotkey" } },
+        "uk" : { "stringUnit" : { "state" : "translated", "value" : "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c \u043a\u043b\u0430\u0432\u0456\u0448\u0456, \u0449\u043e\u0431 \u0432\u0438\u0437\u043d\u0430\u0447\u0438\u0442\u0438 \u043a\u043e\u043c\u0431\u0456\u043d\u0430\u0446\u0456\u044e" } }
       }
     }
   },

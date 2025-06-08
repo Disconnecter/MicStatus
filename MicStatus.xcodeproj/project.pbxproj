@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2A6049C82AAA129300C2B381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6049C72AAA129300C2B381 /* AppDelegate.swift */; };
-		2A6049CA2AAA129400C2B381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6049C92AAA129400C2B381 /* Assets.xcassets */; };
+                2A6049C82AAA129300C2B381 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6049C72AAA129300C2B381 /* AppDelegate.swift */; };
+                B4360716450D4C2488C1AC3D /* MicHardwareMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4360715450D4C2488C1AC3D /* MicHardwareMonitor.swift */; };
+                2A6049CA2AAA129400C2B381 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A6049C92AAA129400C2B381 /* Assets.xcassets */; };
 		2A6049CD2AAA129400C2B381 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A6049CB2AAA129400C2B381 /* MainMenu.xib */; };
 		2A990C652C5B99D10089BF50 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 2A990C642C5B99D10089BF50 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2A6049C42AAA129300C2B381 /* Mic Status.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mic Status.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2A6049C72AAA129300C2B381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2A6049C92AAA129400C2B381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+                2A6049C72AAA129300C2B381 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+                B4360715450D4C2488C1AC3D /* MicHardwareMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicHardwareMonitor.swift; sourceTree = "<group>"; };
+                2A6049C92AAA129400C2B381 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2A6049CC2AAA129400C2B381 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2A6049CE2AAA129400C2B381 /* MicStatus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MicStatus.entitlements; sourceTree = "<group>"; };
 		2A990C642C5B99D10089BF50 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -52,8 +54,9 @@
 		2A6049C62AAA129300C2B381 /* MicStatus */ = {
 			isa = PBXGroup;
 			children = (
-				2A6049C72AAA129300C2B381 /* AppDelegate.swift */,
-				2A6049C92AAA129400C2B381 /* Assets.xcassets */,
+                                2A6049C72AAA129300C2B381 /* AppDelegate.swift */,
+                                B4360715450D4C2488C1AC3D /* MicHardwareMonitor.swift */,
+                                2A6049C92AAA129400C2B381 /* Assets.xcassets */,
 				2A6049CB2AAA129400C2B381 /* MainMenu.xib */,
 				2A6049CE2AAA129400C2B381 /* MicStatus.entitlements */,
 				2A990C642C5B99D10089BF50 /* Localizable.xcstrings */,
@@ -133,7 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2A6049C82AAA129300C2B381 /* AppDelegate.swift in Sources */,
+                                2A6049C82AAA129300C2B381 /* AppDelegate.swift in Sources */,
+                                B4360716450D4C2488C1AC3D /* MicHardwareMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

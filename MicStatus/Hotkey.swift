@@ -8,10 +8,10 @@ struct Hotkey: Codable {
     var displayString: String {
         var parts: [String] = []
         let flags = NSEvent.ModifierFlags(rawValue: modifiers)
-        if flags.contains(.command) { parts.append("\u2318") }
-        if flags.contains(.option) { parts.append("\u2325") }
-        if flags.contains(.shift) { parts.append("\u21E7") }
-        if flags.contains(.control) { parts.append("\u2303") }
+        if flags.contains(.command) { parts.append("\u{2318}") }
+        if flags.contains(.option) { parts.append("\u{2325}") }
+        if flags.contains(.shift) { parts.append("\u{21E7}") }
+        if flags.contains(.control) { parts.append("\u{2303}") }
         parts.append(characters.uppercased())
         return parts.joined()
     }

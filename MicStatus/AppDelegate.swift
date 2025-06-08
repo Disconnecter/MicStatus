@@ -129,7 +129,7 @@ end if
             NSEvent.removeMonitor(monitor)
             hotkeyMonitor = nil
         }
-        guard let hotkey = hotkey else { return }
+        guard let hotkey =  else { return }
         hotkeyMonitor = NSEvent.addGlobalMonitorForEvents(matching: .keyDown) { [weak self] event in
             let flags = event.modifierFlags.intersection(.deviceIndependentFlagsMask)
             if event.keyCode == hotkey.keyCode && flags.rawValue == hotkey.modifiers {

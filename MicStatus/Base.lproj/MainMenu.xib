@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22689"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,9 +14,9 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Mic_Status" customModuleProvider="target">
             <connections>
+                <outlet property="hotkeysMenuAction" destination="vNG-12-Abc" id="abc-de-fgh"/>
                 <outlet property="mainMenu" destination="uQy-DD-JDr" id="O0K-cw-IAr"/>
                 <outlet property="monitorMenuAction" destination="qiq-53-DOG" id="z3B-oU-wbz"/>
-                <outlet property="hotkeysMenuAction" destination="vNG-12-Abc" id="abc-de-fgh"/>
                 <outlet property="quitMenuAction" destination="4sb-4s-VLi" id="XiH-a2-oeE"/>
             </connections>
         </customObject>

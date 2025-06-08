@@ -14,10 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var quitMenuAction: NSMenuItem!
     @IBOutlet weak var monitorMenuAction: NSMenuItem!
     
-    private let script = NSAppleScript(source: "input volume of (get volume settings)")
     private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    private var timer: Timer?
-    private var lastVolume: Int32 = -1
+    private var monitor: MicHardwareMonitor?
     
     private static let iconSize = NSSize(width: 20, height: 20)
     
@@ -40,13 +38,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        startTimer()
+        startMonitor()
         statusItem.menu = mainMenu
         quitMenuAction.title = NSLocalizedString("Menu.Quit", comment: "")
     }
-    
+
     func applicationWillTerminate(_ aNotification: Notification) {
-        stopTimer()
+        stopMonitor()
     }
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
@@ -54,41 +52,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction private func monitoringAction(menuItem: NSMenuItem) {
-        guard timer?.isValid ?? false else {
-            startTimer()
+        guard monitor == nil else {
+            stopMonitor()
             return
         }
-        stopTimer()
-    }
-    
-    private func setIcon() {
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let vol = self?.script?.executeAndReturnError(nil), self?.lastVolume != vol.int32Value else {
-                return
-            }
-            DispatchQueue.main.async { [weak self] in
-                let isMicOn = vol.int32Value > 0
-                self?.lastVolume = vol.int32Value
-                self?.statusItem.button?.image = isMicOn ? self?.micOn : self?.micOff
-            }
-        }
+        startMonitor()
     }
 
-    private func stopTimer() {
-        guard timer?.isValid ?? true else {
-            return
-        }
-        timer?.invalidate()
-        timer = nil
+    private func stopMonitor() {
+        monitor?.stop()
+        monitor = nil
         monitorMenuAction.title = NSLocalizedString("Menu.Start", comment: "")
         statusItem.button?.image = micDown
-        lastVolume = -1
     }
-    
-    private func startTimer() {
+
+    private func startMonitor() {
         monitorMenuAction.title = NSLocalizedString("Menu.Stop", comment: "")
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
-            self?.setIcon()
+        monitor = MicHardwareMonitor { [weak self] isOn in
+            self?.statusItem.button?.image = isOn ? self?.micOn : self?.micOff
         }
     }
 }

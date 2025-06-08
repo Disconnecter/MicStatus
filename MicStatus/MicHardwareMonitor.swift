@@ -13,7 +13,7 @@ final class MicHardwareMonitor {
         address = AudioObjectPropertyAddress(
             mSelector: kAudioDevicePropertyVolumeScalar,
             mScope: kAudioDevicePropertyScopeInput,
-            mElement: kAudioObjectPropertyElementMaster
+            mElement: kAudioObjectPropertyElementMain
         )
         deviceID = Self.defaultInputDevice()
         start()
@@ -25,7 +25,9 @@ final class MicHardwareMonitor {
     }
 
     func stop() {
-        AudioObjectRemovePropertyListenerBlock(deviceID, &address, queue)
+        AudioObjectRemovePropertyListenerBlock(deviceID, &address, queue) { [weak self] _, _ in
+            self?.notify()
+        }
     }
 
     private func start() {
@@ -49,7 +51,7 @@ final class MicHardwareMonitor {
         var address = AudioObjectPropertyAddress(
             mSelector: kAudioHardwarePropertyDefaultInputDevice,
             mScope: kAudioObjectPropertyScopeGlobal,
-            mElement: kAudioObjectPropertyElementMaster
+            mElement: kAudioObjectPropertyElementMain
         )
         guard AudioObjectGetPropertyData(AudioObjectID(kAudioObjectSystemObject), &address, 0, nil, &size, &id) == noErr else {
             return AudioObjectID(kAudioObjectUnknown)

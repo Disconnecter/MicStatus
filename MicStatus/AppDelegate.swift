@@ -69,7 +69,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private func startMonitor() {
         monitorMenuAction.title = NSLocalizedString("Menu.Stop", comment: "")
         monitor = MicHardwareMonitor { [weak self] isOn in
-            self?.statusItem.button?.image = isOn ? self?.micOn : self?.micOff
+            DispatchQueue.main.async {
+                self?.statusItem.button?.image = isOn ? self?.micOn : self?.micOff
+            }
         }
     }
 }
